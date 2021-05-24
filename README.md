@@ -4,7 +4,9 @@ Ansible role for docker-compose
 This role will install docker-compose on compatible platforms.
 
 [![Molecule Test](https://github.com/tgagor/ansible-role-docker-compose/actions/workflows/test-and-release.yml/badge.svg)](https://github.com/tgagor/ansible-role-docker-compose/actions/workflows/test-and-release.yml)
-[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-tgagor-docker-compose.svg)](https://galaxy.ansible.com/tgagor/docker-compose)
+![Ansible Role](https://img.shields.io/ansible/role/55028)
+![Ansible Quality Score](https://img.shields.io/ansible/quality/55028?label=galaxy%20quality%20score)
+![Ansible Role](https://img.shields.io/ansible/role/d/55028)
 
 ## Supported systems
 

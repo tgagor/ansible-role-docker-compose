@@ -1,1 +1,6 @@
 ---
+
+docker_compose_version: 1.29.2
+docker_compose_dir: /opt/docker-compose
+
+docker_compose_enable_bash_completion: true

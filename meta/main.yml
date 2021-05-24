@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: XXX
+  role_name: docker_compose
   namespace: tgagor
   author: Tomasz G.
   description: Role description
@@ -29,7 +29,6 @@ galaxy_info:
       - 8
   - name: Fedora
     versions:
-      - 32
       - 33
       - 34
 
@@ -38,3 +37,4 @@ galaxy_info:
     - developer
     - desktop
     - development
+    - docker

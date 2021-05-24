@@ -2,6 +2,6 @@
 - name: Converge
   hosts: all
   tasks:
-    - name: Include tgagor.XXX
+    - name: Include tgagor.docker_compose
       include_role:
-        name: tgagor.XXX
+        name: tgagor.docker_compose

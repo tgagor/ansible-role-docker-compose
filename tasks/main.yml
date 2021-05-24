@@ -1,24 +1,51 @@
 ---
-- name: example task
-  command: echo test
-  changed_when: false
+- name: Prepare directories for docker-compose
+  file:
+    path: "{{ item }}"
+    mode: 0755
+    state: directory
+  with_items:
+    - "{{ docker_compose_dir }}"
+    - /usr/local/bin
+  tags: docker-compose
 
-# - name: prerequisities
-#   apt:
-#     name:
-#       - apt-transport-https
-#     cache_valid_time: 900
-#
-# - name: install XXX GPG key
-#   apt_key:
-#     url: https://download.spotify.com/debian/pubkey_0D811D58.gpg
-#
-# - name: enable XXX repo
-#   apt_repository:
-#     repo: deb http://repository.spotify.com stable non-free
-#     filename: /etc/apt/sources.list.d/spotify
-#     update_cache: yes
-#
-# - name: install XXX
-#   apt:
-#     name: spotify-client
+- name: Download docker-compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-{{ ansible_architecture }}
+    # checksum: sha256:https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-{{ ansible_architecture }}.sha256
+    dest: "{{ docker_compose_dir }}/docker-compose-v{{ docker_compose_version }}"
+  tags: docker-compose
+
+- name: Set execution permission
+  file:
+    dest: "{{ docker_compose_dir }}/docker-compose-v{{ docker_compose_version }}"
+    mode: 0755
+  tags: docker-compose
+
+- name: Create symlink in /usr/loca/bin
+  file:
+    src: "{{ docker_compose_dir }}/docker-compose-v{{ docker_compose_version }}"
+    dest: /usr/local/bin/docker-compose
+    state: link
+  tags: docker-compose
+
+- name: Install bash-completion
+  package:
+    name: bash-completion
+  when: docker_compose_enable_bash_completion
+  tags: docker-compose
+
+- name: Prepare directory for bash-completion
+  file:
+    path: /etc/bash_completion.d
+    mode: 0755
+    state: directory
+  when: docker_compose_enable_bash_completion
+  tags: docker-compose
+
+- name: Add bash completions
+  get_url:
+    url: https://raw.githubusercontent.com/docker/compose/{{ docker_compose_version }}/contrib/completion/bash/docker-compose
+    dest: /etc/bash_completion.d/docker-compose
+  when: docker_compose_enable_bash_completion
+  tags: docker-compose

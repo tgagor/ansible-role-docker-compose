@@ -23,7 +23,7 @@ galaxy_info:
       - stretch   # 9
       - buster    # 10
       - bullseye  # 11
-  - name: CentOS
+  - name: EL
     versions:
       - 7
       - 8

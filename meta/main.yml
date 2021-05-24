@@ -3,7 +3,7 @@ galaxy_info:
   role_name: docker_compose
   namespace: tgagor
   author: Tomasz G.
-  description: Role description
+  description: Installs Docker Compose in specific version, with optional bash-completion
   license: GPLv3
 
   min_ansible_version: 1.2

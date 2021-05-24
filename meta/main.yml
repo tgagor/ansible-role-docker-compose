@@ -14,10 +14,10 @@ galaxy_info:
   platforms:
   - name: Ubuntu
     versions:
-      - bionic  # 18.04
-      - focal   # 20.04
-      - groovy  # 20.10
-      - hirsute # 21.04
+      - bionic    # 18.04
+      - focal     # 20.04
+      - groovy    # 20.10
+      - hirsute   # 21.04
   - name: Debian
     versions:
       - stretch   # 9
